@@ -1,0 +1,90 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #7c3570cb;
+    color: #fff;
+    padding: 20px;
+    font-family: Kazesawa, sans-serif;
+}
+
+/* Filter Section */
+#filter {
+    margin: 20px; /* Adds space around the filter section */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Filter Item */
+.filter-item {
+    display: flex;
+    flex-direction: row; /* Icon and label/dropdown on the same row */
+    align-items: flex-start;
+    gap: 10px; /* Space between icon and content */
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    margin-bottom: 15px; /* Space between filter items */
+}
+
+/* Icon Style */
+.filter-item i {
+    font-size: 20px;
+    color: #7c3570cb;
+    margin-top: 25px; /* Align icon vertically with the content */
+}
+
+/* Content (Label and Dropdown Container) */
+.filter-content, .input-container {
+    display: flex;
+    flex-direction: column; /* Label above the dropdown */
+    flex: 1; /* Take remaining space */
+    border-bottom: 1px solid #aaa; /* Bottom line only under the dropdown */
+    padding-bottom: 5px;
+}
+
+/* Label Style */
+.filter-content label, .input-container label {
+    font-size: 12px;
+    margin-bottom: 5px; /* Space between the label and dropdown */
+}
+
+/* Select Dropdown */
+.filter-content select, .input-container input {
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+.filter-content select:focus {
+    outline: none;
+    border-color: rgb(209, 84, 186);
+}
+
+/* Focus effect for the input box */
+.input-container input:focus {
+    border-color: #7c3570cb; /* Highlight border when focused */
+}
+
+
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+    .filter-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
