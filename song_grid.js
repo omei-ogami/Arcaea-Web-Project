@@ -7,6 +7,7 @@ fetch('data/song_list.json') // Load the JSON file
 
         songs.forEach(song => {
             const difficultyClass = song.difficulty.toLowerCase();
+            const sideClass = song.side.toLowerCase();
 
             // Dynamically create song cards
             const card = document.createElement('div');
@@ -22,7 +23,7 @@ fetch('data/song_list.json') // Load the JSON file
                 modalContent.innerHTML = `
                     <img src="${song.image}" alt="${song.title}">
                     <p>${song.pack}</p>
-                    <h3>${song.title}</h3>
+                    <h3 class="${sideClass}">${song.title}</h3>
                     <p>${song.artist}</p>
                     <label class="${difficultyClass}">${song.difficulty} ${song.constant}</label>
                     <p>BPM: ${song.bpm}</p>
@@ -60,10 +61,11 @@ fetch('data/song_list.json') // Load the JSON file
             let count = 0;
             const animationInterval = setInterval(() => {
                 const randomIndex = Math.floor(Math.random() * songs.length); // Use songs array for random selection
+                const sideClass = songs[randomIndex].side.toLowerCase();
                 modalContent.innerHTML = `
                     <img src="${songs[randomIndex].image}" alt="${songs[randomIndex].title}">
                     <p>${songs[randomIndex].pack}</p>
-                    <h3>${songs[randomIndex].title}</h3>
+                    <h3 class="${sideClass}">${songs[randomIndex].title}</h3>
                     <p>${songs[randomIndex].artist}</p>
                     <label class="${songs[randomIndex].difficulty.toLowerCase()}">${songs[randomIndex].difficulty} ${songs[randomIndex].constant}</label>
                     <p>BPM: ${songs[randomIndex].bpm}</p>
@@ -78,12 +80,13 @@ fetch('data/song_list.json') // Load the JSON file
             setTimeout(() => {
                 clearInterval(animationInterval); // Stop the animation
                 const finalSong = songs[Math.floor(Math.random() * songs.length)]; // Randomly pick a final song
+                const sideClass = finalSong.side.toLowerCase();
                 
                 // Update modal content with final song details
                 modalContent.innerHTML = `
                     <img src="${finalSong.image}" alt="${finalSong.title}">
                     <p>${finalSong.pack}</p>
-                    <h3>${finalSong.title}</h3>
+                    <h3 class="${sideClass}">${finalSong.title}</h3>
                     <p>${finalSong.artist}</p>
                     <label class="${finalSong.difficulty.toLowerCase()}">${finalSong.difficulty} ${finalSong.constant}</label>
                     <p>BPM: ${finalSong.bpm}</p>
@@ -92,7 +95,7 @@ fetch('data/song_list.json') // Load the JSON file
                     <p>Unlock Condition: ${finalSong.unlock}</p>
                     <button id="pick-again-button">Pick Again</button>
                 `;
-                
+
                 // Add event listener to the "Pick Again" button
                 document.getElementById("pick-again-button").addEventListener("click", function() {
                     // Reset the modal content and call the random button functionality again

@@ -206,6 +206,14 @@ header {
     text-align: start;
 }
 
+.modal-content h3.light {
+    color: rgb(122, 210, 228);
+}
+
+.modal-content h3.conflict {
+    color: blueviolet;
+}
+
 .modal-content p {
     font-size: 12px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
