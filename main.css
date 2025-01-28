@@ -92,8 +92,8 @@ header {
 /* song grid */
 #song-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
     margin-top: 0;
     padding-top: 0;
     padding-left: 50px;
@@ -107,8 +107,8 @@ header {
     padding: 10px;
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 150px;
-    height: 180px;
+    width: 140px;
+    height: 168px;
     overflow: hidden; /* Prevent content from overflowing */
 }
 
@@ -126,10 +126,21 @@ header {
     font-size: 15px; /* Adjust size for better fit */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
-    color: purple;
     display: block; /* Ensure it takes a full line below the image */
     margin-top: auto; /* Avoid collapsing margins */
     line-height: 1.2; /* Add some spacing within text lines */
+}
+
+.song-card label.future {
+    color: purple; 
+}
+
+.song-card label.beyond {
+    color: red; 
+}
+
+.song-card label.eternal {
+    color: plum; 
 }
 
 .song-card:hover {
@@ -155,7 +166,7 @@ header {
 
 /* Modal 基本樣式 */
 .modal {
-    display: flex; /* 預設隱藏 */
+    display: none; /* 預設隱藏 */
     position: fixed;
     top: 0;
     left: 0;
