@@ -7,16 +7,18 @@ Date: 2025.1.28
 - [x] Import songs from "Arcaea" pack.
 - [x] Display songs on the website dynamically.
 - [x] Song info card can be displayed when clicking on a song ans closed when clicking outside.
+- [x] Random picking of songs.
   
 ## Tomorrow's Plan
 - Generate song information in JSON format.
-- Write JavaScript code to fetch the data and display it on the website.
-- Some text may have to change its color accordingly to make it more readable. (See Note 3)
+  * Eternal Core
+  * Adverse Prelude 
+- Operating the filter.
+- Add the world mode icon.
 
 ## Note
 * Since multi-selection will be very ugly if using `multiple` attribute, I will use checkboxes instead later in the dynamic front-end stage.
-* Some of the text may be better to change colors depending on the context.
-* For now, we just use the dummy data.
+
 
 ## Appearence Progress 
 ![alt text](image.png)
