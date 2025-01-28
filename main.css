@@ -131,15 +131,15 @@ header {
     line-height: 1.2; /* Add some spacing within text lines */
 }
 
-.song-card label.future {
+.song-card label.future, .modal-content label.future{
     color: purple; 
 }
 
-.song-card label.beyond {
+.song-card label.beyond, .modal-content label.beyond {
     color: red; 
 }
 
-.song-card label.eternal {
+.song-card label.eternal, .modal-content label.eternal {
     color: plum; 
 }
 
@@ -183,8 +183,8 @@ header {
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
-    width: 300px;
-    height: 500px;
+    width: 350px;
+    height: 550px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -216,25 +216,35 @@ header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
     text-align: start;
-    color: purple;
     display: block; /* Ensure it takes a full line below the image */
     margin-top: auto; /* Avoid collapsing margins */
     line-height: 1.2; /* Add some spacing within text lines */
     margin-top: 15px;
     margin-bottom: 15px;
-    background-color: rgba(209, 84, 186, 0.1);
 }
 
-.modal-content .close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 18px;
-    cursor: pointer;
-    color: #aaa;
-    transition: color 0.3s;
+.modal-content label.future {
+    background-color: rgba(128, 0, 128, 0.2);
+}
+
+.modal-content label.beyond {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.modal-content label.eternal {
+    background-color: rgba(221, 160, 221, 0.2);
 }
 
 .modal-content .close:hover {
     color: #7c3570cb;
 }
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal.hidden {
+    display: none;
+}
+

@@ -3,9 +3,10 @@ This is the web project for the Arcaea mobile game. The idea is to create a webs
 
 ## Daily Updates
 
-Date: 2025.1.27
-- [x] Add song grid.
-- [x] Add song information card.
+Date: 2025.1.28
+- [x] Import songs from "Arcaea" pack.
+- [x] Display songs on the website dynamically.
+- [x] Song info card can be displayed when clicking on a song ans closed when clicking outside.
   
 ## Tomorrow's Plan
 - Generate song information in JSON format.
@@ -19,6 +20,7 @@ Date: 2025.1.27
 
 ## Appearence Progress 
 ![alt text](image.png)
+![alt text](image-1.png)
 
 ## Reference
 The project is inspired by [this website](https://arcade-songs.zetaraku.dev/maimai/). It provides a good reference for the design and functionality of the website about acrade music games.
