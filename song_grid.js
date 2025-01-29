@@ -9,11 +9,28 @@ fetch('data/song_list.json') // Load the JSON file
             const difficultyClass = song.difficulty.toLowerCase();
             const sideClass = song.side.toLowerCase();
 
+            let lockIcon = '';
+            if(song.unlock.includes("[Special]") || song.unlock.includes("[Anomaly]")) {
+                lockIcon = `
+                    <div class="lock-icon">
+                        <i class="fa-solid fa-diamond"></i>
+                    </div>
+                `;
+            }
+            else if(song.unlock !== "None") {
+                lockIcon = `
+                    <div class="lock-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                `;
+            }
+
             // Dynamically create song cards
             const card = document.createElement('div');
             card.classList.add('song-card');
             card.innerHTML = `
                 <img src="${song.image}" alt="${song.title}">
+                ${lockIcon}
                 <label class="${difficultyClass}">${song.difficulty} ${song.level}</label>
             `;
 

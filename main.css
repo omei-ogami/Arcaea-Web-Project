@@ -92,7 +92,7 @@ header {
 /* song grid */
 #song-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 3px;
     margin-top: 0;
     padding-top: 0;
@@ -102,6 +102,7 @@ header {
 
 /* single song card */
 .song-card {
+    position: relative;
     border: 0px solid #e0e0e0; /* Add a light border for better visibility */
     border-radius: 8px;
     padding: 10px;
@@ -162,6 +163,25 @@ header {
 
 .song-card .view-details:hover {
     background-color: #5e2957;
+}
+
+.lock-icon {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 30px;
+    height: 30px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lock-icon i {
+    width: 18px;
+    height: 18px;
 }
 
 /* Modal 基本樣式 */
