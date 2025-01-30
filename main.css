@@ -13,6 +13,21 @@ header {
     font-family: Kazesawa, sans-serif;
 }
 
+.container { 
+    display: flex;
+    justify-content: center;  /* 水平置中 */
+    align-items: center;      /* 垂直置中 */
+    height: 80px;            /* 確保有高度 */
+}
+
+#update {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px 15px;
+    border: cornflowerblue 2px solid;
+    color: cornflowerblue;
+}
+
 /* Filter Section */
 #filter {
     margin: 15px; /* Adds space around the filter section */
@@ -232,6 +247,10 @@ header {
 
 .modal-content h3.conflict {
     color: blueviolet;
+}
+
+.modal-content h3.colorless {
+    color: rgb(173, 170, 170);
 }
 
 .modal-content p {

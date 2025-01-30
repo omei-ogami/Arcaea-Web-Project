@@ -13,14 +13,14 @@ fetch('data/song_list.json') // Load the JSON file
             if(song.unlock.includes("[Special]") || song.unlock.includes("[Anomaly]")) {
                 lockIcon = `
                     <div class="lock-icon">
-                        <i class="fa-solid fa-diamond"></i>
+                        <i class="fa-solid fa-diamond" title="The song has some special unlock condition."></i>
                     </div>
                 `;
             }
-            else if(song.unlock !== "None") {
+            else if(song.unlock.includes("World Mode")) {
                 lockIcon = `
                     <div class="lock-icon">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" title="The song can be unlocked in world mode."></i>
                     </div>
                 `;
             }

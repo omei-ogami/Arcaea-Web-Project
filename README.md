@@ -4,13 +4,13 @@ This is the web project for the Arcaea mobile game. The idea is to create a webs
 ## Daily Updates
 
 Date: 2025.1.28
-- [x] Import songs from main story "Eternal Core" ~ "Black Fate" pack.
-- [x] Add icons to display locked.
-- [x] Let the sonf grid can fit any media screen size.
+- [x] Import songs from main story "Final Verdict" pack.
+- [x] Change the rule of displaying locks.
+- [x] Add hints to the lock. 
   
 ## Tomorrow's Plan
 - Generate song information in JSON format.
-  * Final Verdict
+  * Lasting Eden
 - Operating the filter.
 
 ## Note
