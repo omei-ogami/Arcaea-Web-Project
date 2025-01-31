@@ -111,6 +111,7 @@ header {
     gap: 3px;
     margin-top: 0;
     padding-top: 0;
+    margin-bottom: 30px;
     padding-left: 50px;
     justify-content: center;
 }
@@ -328,6 +329,12 @@ header {
 #random-button:hover {
     background-color: #e60000;
     transform: scale(1.05);
+}
+
+#random-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none; /* Prevents any interaction with the button */
 }
 
 #pick-again-button {

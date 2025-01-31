@@ -4,14 +4,13 @@ This is the web project for the Arcaea mobile game. The idea is to create a webs
 ## Daily Updates
 
 Date: 2025.1.28
-- [x] Import songs from main story "Final Verdict" pack.
-- [x] Change the rule of displaying locks.
-- [x] Add hints to the lock. 
+- [x] Add filters except name searching.
+- [x] Filters also apply to the random button.
   
 ## Tomorrow's Plan
 - Generate song information in JSON format.
   * Lasting Eden
-- Operating the filter.
+- Operating the name searching filter.
 
 ## Note
 * Since multi-selection will be very ugly if using `multiple` attribute, I will use checkboxes instead later in the dynamic front-end stage.
