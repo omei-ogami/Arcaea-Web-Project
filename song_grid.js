@@ -138,7 +138,7 @@ fetch('data/song_list.json')
                     <p>Chart Designer: ${filteredSongs[randomIndex].chart_designer}</p>
                     <p>Unlock Condition: ${filteredSongs[randomIndex].unlock}</p>
                 `;
-            }, 50);
+            }, 80);
 
             setTimeout(() => {
                 clearInterval(animationInterval);
