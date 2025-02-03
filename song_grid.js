@@ -4,7 +4,8 @@ fetch('data/song_list.json')
         const songList = document.querySelector('.song-grid');
         const modal = document.getElementById('song-modal');
         const modalContent = modal.querySelector('.modal-content');
-        const packFilter = document.getElementById('song-pack-filter'); 
+        const packFilter = document.getElementById('song-pack-filter');
+        const nameFilter = document.getElementById('search'); 
         const difficultyFilter = document.getElementById('difficulty-filter'); 
         const minLevelFilter = document.getElementById('min-level');
         const maxLevelFilter = document.getElementById('max-level');
@@ -77,12 +78,13 @@ fetch('data/song_list.json')
             filteredSongs = allSongs.filter(song => {
                 const selectedDifficulty = difficultyFilter.value.toLowerCase();
                 const selectedPack = packFilter.value.toLowerCase();
+                const searchQuery = nameFilter.value.trim().toLowerCase();
                 const selectedMinLevel = parseLevel(minLevelFilter.value); 
-                const selectedMaxLevel = parseLevel(maxLevelFilter.value); 
-
+                const selectedMaxLevel = parseLevel(maxLevelFilter.value);
                 return (
                     (selectedDifficulty === "all" || song.difficulty.toLowerCase() === selectedDifficulty) &&
-                    (selectedPack === "all" || song.pack.toLowerCase() === selectedPack) &&
+                    (selectedPack === "all" || song.pack.toLowerCase().includes(selectedPack)) &&
+                    (searchQuery === "" || song.title.toLowerCase().includes(searchQuery)) &&
                     (parseLevel(song.level) >= selectedMinLevel) &&
                     (parseLevel(song.level) <= selectedMaxLevel)
                 );
@@ -96,6 +98,7 @@ fetch('data/song_list.json')
         packFilter.addEventListener('change', applyFilters);
         minLevelFilter.addEventListener('input', applyFilters);
         maxLevelFilter.addEventListener('input', applyFilters);
+        nameFilter.addEventListener('input', applyFilters);
 
         // Close modal when clicked outside
         modal.addEventListener('click', (event) => {
