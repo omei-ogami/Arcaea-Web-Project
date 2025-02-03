@@ -100,6 +100,16 @@ fetch('data/song_list.json')
         maxLevelFilter.addEventListener('input', applyFilters);
         nameFilter.addEventListener('input', applyFilters);
 
+        document.getElementById("resetFilters").addEventListener("click", () => {
+            document.getElementById("search").value = "";
+            document.getElementById("difficulty-filter").value = "all";
+            document.getElementById("min-level").value = "1";
+            document.getElementById("max-level").value = "12";
+            document.getElementById("song-pack-filter").value = "all";
+            displaySongs(allSongs);
+            filteredSongs = allSongs;
+        });
+
         // Close modal when clicked outside
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
