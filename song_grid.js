@@ -117,16 +117,16 @@ fetch('data/song_list.json')
             }
         });
 
-        // Random Button
-        const randomButton = document.getElementById("random-button");
-        if (filteredSongs.length === 0) {
-            randomButton.disabled = true;
-            randomButton.classList.add("disabled");
-        } else {
-            randomButton.disabled = false;
-            randomButton.classList.remove("disabled");
-        }
+        const randomModal = document.getElementById("random-multiple-modal");
 
+        randomModal.addEventListener('click', (event) => {
+            if (event.target === randomModal) {
+                randomModal.classList.add('hidden');
+                randomModal.classList.remove('show'); // Ensure 'show' class is also removed
+            }
+        });
+
+        // Random Button
         document.getElementById("random-button").addEventListener("click", function() {
             if(filteredSongs.length === 0){
                 alert("No songs found.");
@@ -136,7 +136,6 @@ fetch('data/song_list.json')
             modal.classList.add('show');
             const modalContent = modal.querySelector('.modal-content');
 
-            let count = 0;
             const animationInterval = setInterval(() => {
                 const randomIndex = Math.floor(Math.random() * filteredSongs.length);
                 const sideClass = filteredSongs[randomIndex].side.toLowerCase();
@@ -175,5 +174,53 @@ fetch('data/song_list.json')
                 });
             }, 2000);
         });
+
+        // Random button multiple
+        function generateFourSongGrid(songs) {
+            return `
+                <div class="random-modal-song-grid">
+                    ${songs.map(song => `
+                        <div class="random-modal-song-item">
+                            <img src="${song.image}" alt="${song.title}">
+                            <h3 class="${song.difficulty.toLowerCase()}">${song.difficulty} ${song.constant}</h3>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        document.getElementById("random-button-multiple").addEventListener("click", function () {
+            if (filteredSongs.length < 4) {
+                alert("Not enough songs to pick 4.");
+                return;
+            }
+
+            const randomModal = document.getElementById("random-multiple-modal");
+            randomModal.classList.remove("hidden");
+            randomModal.classList.add("show");
+
+            const modalContent = randomModal.querySelector(".random-modal-content");
+
+            let animationInterval = setInterval(() => {
+                let shuffled = [...filteredSongs].sort(() => 0.5 - Math.random());
+                let selectedSongs = shuffled.slice(0, 4);
+                modalContent.innerHTML = generateFourSongGrid(selectedSongs);
+            }, 80);
+
+            setTimeout(() => {
+                clearInterval(animationInterval);
+                let shuffled = [...filteredSongs].sort(() => 0.5 - Math.random());
+                let finalSongs = shuffled.slice(0, 4);
+
+                modalContent.innerHTML = generateFourSongGrid(finalSongs);
+                modalContent.innerHTML += `<button id="pick-again-button-multiple">Pick Again</button>`;
+
+                document.getElementById("pick-again-button-multiple").addEventListener("click", function () {
+                    document.getElementById("random-button-multiple").click();
+                });
+            }, 2000);
+        });
+
+        
     })
     .catch(error => console.error('Error loading songs:', error));

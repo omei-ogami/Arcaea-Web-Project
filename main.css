@@ -176,15 +176,15 @@ header {
     line-height: 1.2; /* Add some spacing within text lines */
 }
 
-.song-card label.future, .modal-content label.future{
+.song-card label.future, .modal-content label.future, .random-modal-song-item h3.future{
     color: purple; 
 }
 
-.song-card label.beyond, .modal-content label.beyond {
+.song-card label.beyond, .modal-content label.beyond, .random-modal-song-item h3.beyond {
     color: red; 
 }
 
-.song-card label.eternal, .modal-content label.eternal {
+.song-card label.eternal, .modal-content label.eternal, .random-modal-song-item h3.eternal {
     color: plum; 
 }
 
@@ -229,7 +229,7 @@ header {
 }
 
 /* Modal 基本樣式 */
-.modal {
+.modal, .random-modal {
     display: none; /* 預設隱藏 */
     position: fixed;
     top: 0;
@@ -328,6 +328,10 @@ header {
     display: none;
 }
 
+.random-modal.hidden {
+    display: None;
+}
+
 /* Random Button*/
 .button-container {
     display: flex;
@@ -335,6 +339,7 @@ header {
     align-items: center;      /* 垂直置中 */
     height: 5vh;            /* 讓容器撐滿整個畫面 */
     margin-bottom: 25px;      /* 留出空間 */
+    gap: 50px;
 }
 
 /* 按鈕樣式 */
@@ -353,13 +358,33 @@ header {
     transition: 0.2s ease-in-out;
 }
 
+#random-button-multiple {
+    display: flex;
+    align-items: center;  /* 讓 icon & 文字對齊 */
+    gap: 8px;            /* icon 和文字之間的間距 */
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(147, 153, 215); /* 紅色調 */
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
 /* hover 效果 */
 #random-button:hover {
     background-color: #e60000;
     transform: scale(1.05);
 }
 
-#random-button:disabled {
+#random-button-multiple:hover {
+    background-color: blue;
+    transform: scale(1.05);
+}
+
+#random-button:disabled, #random-button-multiple:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none; /* Prevents any interaction with the button */
@@ -378,4 +403,112 @@ header {
     color: white;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+}
+
+/* Pick Again Button */
+#pick-again-button {
+    margin-top: 20px;
+    background-color: palevioletred;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#pick-again-button:hover {
+    background-color: rgb(209, 84, 186);
+}
+
+/* Basic reset and modal background */
+.random-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+}
+
+/* Show the modal */
+.random-modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Modal content box */
+.random-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    max-width: 600px; /* Limit width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+    text-align: center;
+}
+
+.random-modal-song-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.random-modal-song-item img {
+    width: 150px; /* 或适当大小 */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.random-modal-song-item h3 {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sanif;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    /*
+    .random-modal-song-grid {
+        grid-template-columns: 1fr;
+    }*/
+
+    .random-modal-content {
+        width: 80%;
+    }
+
+    /* Add responsiveness to images */
+    .random-modal-song-grid img {
+        width: 100%;  /* Makes the images take up the full width of their container */
+        height: auto;  /* Maintains the aspect ratio */
+    }
+}
+
+
+
+/* Button inside modal */
+#pick-again-button-multiple {
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(147, 153, 215);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#pick-again-button-multiple:hover {
+    background-color: #306dae;
 }
