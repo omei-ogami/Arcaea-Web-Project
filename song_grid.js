@@ -166,7 +166,18 @@ fetch('data/song_list.json')
             return `
                 <div class="random-modal-song-grid">
                     ${songs.map(song => `
-                        <div class="random-modal-song-item" data-song='${JSON.stringify(song)}'>
+                        <div class="random-modal-song-item"
+                            data-title="${song.title}"
+                            data-image="${song.image}"
+                            data-difficulty="${song.difficulty}"
+                            data-constant="${song.constant}"
+                            data-pack="${song.pack}"
+                            data-artist="${song.artist}"
+                            data-bpm="${song.bpm}"
+                            data-side="${song.side}"
+                            data-chart-designer="${song.chart_designer}"
+                            data-unlock="${song.unlock}"
+                        >
                             <img src="${song.image}" alt="${song.title}">
                             <h3 class="${song.difficulty.toLowerCase()}">${song.difficulty} ${song.constant}</h3>
                         </div>
@@ -174,6 +185,7 @@ fetch('data/song_list.json')
                 </div>
             `;
         }
+        
         
 
         document.getElementById("random-button-multiple").addEventListener("click", function () {
@@ -211,9 +223,32 @@ fetch('data/song_list.json')
         document.addEventListener("click", function (event) {
             if (event.target.closest(".random-modal-song-item")) {
                 const songItem = event.target.closest(".random-modal-song-item");
-                const song = JSON.parse(songItem.dataset.song);
-                const difficultyClass = song.difficulty.toLowerCase();
-                const sideClass = song.side.toLowerCase();
+                const songTitle = songItem.dataset.title;
+                const songImage = songItem.dataset.image;
+                const songDifficulty = songItem.dataset.difficulty;
+                const songConstant = songItem.dataset.constant;
+                const songPack = songItem.dataset.pack;
+                const songArtist = songItem.dataset.artist;
+                const songBPM = songItem.dataset.bpm;
+                const songSide = songItem.dataset.side;
+                const songChartDesigner = songItem.dataset.chartDesigner;
+                const songUnlock = songItem.dataset.unlock;
+
+                const difficultyClass = songDifficulty.toLowerCase();
+                const sideClass = songSide.toLowerCase();
+
+                const song = {
+                    title: songTitle,
+                    image: songImage,
+                    difficulty: songDifficulty,
+                    constant: songConstant,
+                    pack: songPack,
+                    artist: songArtist,
+                    bpm: songBPM,
+                    side: songSide,
+                    chart_designer: songChartDesigner,
+                    unlock: songUnlock
+                };
 
                 modalContent.innerHTML = generateModal(song, sideClass, difficultyClass);
                 modal.classList.remove("hidden");
