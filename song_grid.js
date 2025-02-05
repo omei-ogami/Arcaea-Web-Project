@@ -12,6 +12,20 @@ fetch('data/song_list.json')
 
         let allSongs = songs; // save all songs in a variable
 
+        function generateModal(song, sideClass, difficultyClass) {
+            return `
+                <img src="${song.image}" alt="${song.title}">
+                <p>${song.pack}</p>
+                <h3 class="${sideClass}">${song.title}</h3>
+                <p>${song.artist}</p>
+                <label class="${difficultyClass}">${song.difficulty} ${song.constant}</label>
+                <p>BPM: ${song.bpm}</p>
+                <p>Side: ${song.side}</p>
+                <p>Chart Designer: ${song.chart_designer}</p>
+                <p>Unlock Condition: ${song.unlock}</p>
+            `;
+        }
+
         // Function to display songs in the grid
         function displaySongs(filteredSongs) {
             songList.innerHTML = ""; // clear previous contnet
@@ -41,17 +55,7 @@ fetch('data/song_list.json')
 
                 // Click event listener for each card to display the song details in the modal
                 card.addEventListener('click', () => {
-                    modalContent.innerHTML = `
-                        <img src="${song.image}" alt="${song.title}">
-                        <p>${song.pack}</p>
-                        <h3 class="${sideClass}">${song.title}</h3>
-                        <p>${song.artist}</p>
-                        <label class="${difficultyClass}">${song.difficulty} ${song.constant}</label>
-                        <p>BPM: ${song.bpm}</p>
-                        <p>Side: ${song.side}</p>
-                        <p>Chart Designer: ${song.chart_designer}</p>
-                        <p>Unlock Condition: ${song.unlock}</p>
-                    `;
+                    modalContent.innerHTML = generateModal(song, sideClass, difficultyClass);
 
                     modal.classList.remove('hidden');
                     modal.classList.add('show');
@@ -139,36 +143,18 @@ fetch('data/song_list.json')
             const animationInterval = setInterval(() => {
                 const randomIndex = Math.floor(Math.random() * filteredSongs.length);
                 const sideClass = filteredSongs[randomIndex].side.toLowerCase();
-                modalContent.innerHTML = `
-                    <img src="${filteredSongs[randomIndex].image}" alt="${filteredSongs[randomIndex].title}">
-                    <p>${filteredSongs[randomIndex].pack}</p>
-                    <h3 class="${sideClass}">${filteredSongs[randomIndex].title}</h3>
-                    <p>${filteredSongs[randomIndex].artist}</p>
-                    <label class="${filteredSongs[randomIndex].difficulty.toLowerCase()}">${filteredSongs[randomIndex].difficulty} ${filteredSongs[randomIndex].constant}</label>
-                    <p>BPM: ${filteredSongs[randomIndex].bpm}</p>
-                    <p>Side: ${filteredSongs[randomIndex].side}</p>
-                    <p>Chart Designer: ${filteredSongs[randomIndex].chart_designer}</p>
-                    <p>Unlock Condition: ${filteredSongs[randomIndex].unlock}</p>
-                `;
+                const difficultyClass = filteredSongs[randomIndex].difficulty.toLowerCase();
+                modalContent.innerHTML = generateModal(filteredSongs[randomIndex], sideClass, difficultyClass);
             }, 80);
 
             setTimeout(() => {
                 clearInterval(animationInterval);
                 const finalSong = filteredSongs[Math.floor(Math.random() * filteredSongs.length)];
                 const sideClass = finalSong.side.toLowerCase();
-                modalContent.innerHTML = `
-                    <img src="${finalSong.image}" alt="${finalSong.title}">
-                    <p>${finalSong.pack}</p>
-                    <h3 class="${sideClass}">${finalSong.title}</h3>
-                    <p>${finalSong.artist}</p>
-                    <label class="${finalSong.difficulty.toLowerCase()}">${finalSong.difficulty} ${finalSong.constant}</label>
-                    <p>BPM: ${finalSong.bpm}</p>
-                    <p>Side: ${finalSong.side}</p>
-                    <p>Chart Designer: ${finalSong.chart_designer}</p>
-                    <p>Unlock Condition: ${finalSong.unlock}</p>
-                    <button id="pick-again-button">Pick Again</button>
-                `;
-
+                const difficultyClass = finalSong.difficulty.toLowerCase();
+                modalContent.innerHTML = generateModal(finalSong, sideClass, difficultyClass);
+    
+                modalContent.innerHTML += `<button id="pick-again-button">Pick Again</button>`;
                 document.getElementById("pick-again-button").addEventListener("click", function() {
                     document.getElementById("random-button").click();
                 });
@@ -180,7 +166,7 @@ fetch('data/song_list.json')
             return `
                 <div class="random-modal-song-grid">
                     ${songs.map(song => `
-                        <div class="random-modal-song-item">
+                        <div class="random-modal-song-item" data-song='${JSON.stringify(song)}'>
                             <img src="${song.image}" alt="${song.title}">
                             <h3 class="${song.difficulty.toLowerCase()}">${song.difficulty} ${song.constant}</h3>
                         </div>
@@ -188,6 +174,7 @@ fetch('data/song_list.json')
                 </div>
             `;
         }
+        
 
         document.getElementById("random-button-multiple").addEventListener("click", function () {
             if (filteredSongs.length < 4) {
@@ -219,6 +206,19 @@ fetch('data/song_list.json')
                     document.getElementById("random-button-multiple").click();
                 });
             }, 2000);
+        });
+
+        document.addEventListener("click", function (event) {
+            if (event.target.closest(".random-modal-song-item")) {
+                const songItem = event.target.closest(".random-modal-song-item");
+                const song = JSON.parse(songItem.dataset.song);
+                const difficultyClass = song.difficulty.toLowerCase();
+                const sideClass = song.side.toLowerCase();
+
+                modalContent.innerHTML = generateModal(song, sideClass, difficultyClass);
+                modal.classList.remove("hidden");
+                modal.classList.add("show");
+            }
         });
 
         
