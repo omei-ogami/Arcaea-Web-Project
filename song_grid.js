@@ -14,7 +14,7 @@ fetch('data/song_list.json')
 
         function generateModal(song, sideClass, difficultyClass) {
             return `
-                <img src="${song.image}" alt="${song.title}">
+                <img src="${song.image}" alt="${song.title} loading="lazy"">
                 <p>${song.pack}</p>
                 <h3 class="${sideClass}">${song.title}</h3>
                 <p>${song.artist}</p>
@@ -48,7 +48,7 @@ fetch('data/song_list.json')
                 const card = document.createElement('div');
                 card.classList.add('song-card');
                 card.innerHTML = `
-                    <img src="${song.image}" alt="${song.title}">
+                    <img src="${song.image}" alt="${song.title}" loading="lazy">
                     ${lockIcon}
                     <label class="${difficultyClass}">${song.difficulty} ${song.level}</label>
                 `;
@@ -178,7 +178,7 @@ fetch('data/song_list.json')
                             data-chart-designer="${song.chart_designer}"
                             data-unlock="${song.unlock}"
                         >
-                            <img src="${song.image}" alt="${song.title}">
+                            <img src="${song.image}" alt="${song.title} loading="lazy"">
                             <h3 class="${song.difficulty.toLowerCase()}">${song.difficulty} ${song.constant}</h3>
                         </div>
                     `).join('')}
@@ -189,8 +189,8 @@ fetch('data/song_list.json')
         
 
         document.getElementById("random-button-multiple").addEventListener("click", function () {
-            if (filteredSongs.length < 4) {
-                alert("Not enough songs to pick 4.");
+            if(filteredSongs.length === 0){
+                alert("No songs found.");
                 return;
             }
 
@@ -201,18 +201,29 @@ fetch('data/song_list.json')
             const modalContent = randomModal.querySelector(".random-modal-content");
 
             let animationInterval = setInterval(() => {
-                let shuffled = [...filteredSongs].sort(() => 0.5 - Math.random());
-                let selectedSongs = shuffled.slice(0, 4);
-                modalContent.innerHTML = generateFourSongGrid(selectedSongs);
+                let selectedSongs = [];
+                for (let i = 0; i < 4; i++) {
+                    let randomIndex = Math.floor(Math.random() * filteredSongs.length);
+                    selectedSongs.push(filteredSongs[randomIndex]);
+                }
+                let tempDiv = document.createElement("div");
+                tempDiv.innerHTML = generateFourSongGrid(selectedSongs);
+                modalContent.replaceChildren(...tempDiv.children);
             }, 80);
 
             setTimeout(() => {
                 clearInterval(animationInterval);
-                let shuffled = [...filteredSongs].sort(() => 0.5 - Math.random());
-                let finalSongs = shuffled.slice(0, 4);
+                let finalSongs = [];
+                for (let i = 0; i < 4; i++) {
+                    let randomIndex = Math.floor(Math.random() * filteredSongs.length);
+                    finalSongs.push(filteredSongs[randomIndex]);
+                }
 
                 modalContent.innerHTML = generateFourSongGrid(finalSongs);
-                modalContent.innerHTML += `<button id="pick-again-button-multiple">Pick Again</button>`;
+                let pickAgainButton = document.createElement("button");
+                pickAgainButton.id = "pick-again-button-multiple";
+                pickAgainButton.textContent = "Pick Again";
+                modalContent.appendChild(pickAgainButton);
 
                 document.getElementById("pick-again-button-multiple").addEventListener("click", function () {
                     document.getElementById("random-button-multiple").click();

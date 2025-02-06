@@ -1,171 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
     <title>Arcaea Web Project</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</link>
+    <link rel="stylesheet" href="main.css"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="https://kazesawa.github.io/css/webfont.css"></link>
+    <link href="https://fonts.cdnfonts.com/css/exo-4" rel="stylesheet"></link>
+    <link href="https://fonts.cdnfonts.com/css/geo-sans-light" rel="stylesheet"></link>
+</head>
 <body>
-    <!-- Header -->
     <header>
         <h1>Arcaea Song List</h1>
     </header>
-    <!-- Update-->
-    <div class="container">
-        <div id="update">Last Updated: 2025-02-06, All collabration packs are added.</div>
-    </div>
-    
-    <!-- Filter Section -->
-    <!-- Reset Filters Button -->
-    <div class="filter-header">
-        <button id="resetFilters" class="reset-button">
-            <i class="fas fa-sync-alt"></i> Reset Filters
-        </button>
-    </div>
-    <section id="filter">
-        <!-- Song Packs Filter -->
-        <div class="filter-item">
-            <i class="far fa-folder"></i>
-            <div class="filter-content">
-                <label for="song-pack-filter">Song Packs</label>
-                <select id="song-pack-filter">
-                    <option value="all">All</option>
-                    <option value="arcaea">Arcaea</option>
-                    <option value="memory archive">Memory Archive</option>
-                    <option value="extend archive">Extend Archive</option>
-                    <option value="eternal core">Eternal Core</option>
-                    <option value="vicious labyrinth">Vicious Labyrinth</option>
-                    <option value="luminous sky">Luminous Sky</option>
-                    <option value="adverse prelude">Adverse Prelude</option>
-                    <option value="black fate">Black Fate</option>
-                    <option value="final verdict / silent answer">Final Verdict / Silent Answer</option>
-                    <option value="lasting eden / served eden">Lasting Eden / Served Eden</option>
-                    <option value="absolute nihil">Absolute Nihil</option>
-                    <option value="lucent historia">Lucent Historia</option>
-                    <option value="crimson solace">Crimson Solace</option>
-                    <option value="ambivalent vision">Ambivalent Vision</option>
-                    <option value="binary enfold">Binary Enfold</option>
-                    <option value="absolute reason">Absolute Reason</option>
-                    <option value="sunset radiance">Sunset Radiance</option>
-                    <option value="ephemeral page">Ephemeral Page</option>
-                    <option value="esoteric order">Esoteric Order</option>
-                    <option value="divided heart">Divided Heart</option>
-                    <option value="dynamix">Dynamix</option>
-                    <option value="lanota">Lanota</option>
-                    <option value="tone sphere">Tone Sphere</option>
-                    <option value="groove coaster">Groove Coaster</option>
-                    <option value="chunithm">CHUNITHM</option>
-                    <option value="o.n.g.e.k.i">O.N.G.E.K.I</option>
-                    <option value="maimai">maimai</option>
-                    <option value="wacca">WACCA</option>
-                    <option value="muse dash">Muse Dash</option>
-                    <option value="cytus ii">Cytus II</option>
-                    <option value="rotaeno">Rotaeno</option>
-                </select>
-            </div>
+    <div class="content-wrapper">
+        <!-- Update-->
+        <div class="container">
+            <div id="update">Last Updated: 2025-02-06, All collabration packs are added, Better Style!</div>
         </div>
-        <!-- Name Search -->
-        <div class="filter-item">
-            <i class="fas fa-font"></i>
-            <div class="input-container">
-                <label for="search">Name</label>
-                <input type="text" id="search" placeholder="Type here...">
-            </div>
-        </div>
-        <!-- Difficulty Filter -->
-        <div class="filter-item">
-            <i class="fa-solid fa-skull-crossbones"></i>
-            <div class="filter-content">
-                <label for="difficulty-filter">Difficulty</label>
-                <select id="difficulty-filter">
-                    <option value="all">All</option>
-                    <option value="past">Past</option>
-                    <option value="present">Present</option>
-                    <option value="future">Future</option>
-                    <option value="beyond">Beyond</option>
-                    <option value="eternal">Eternal</option>
-                </select>
-            </div>
-        </div>
-        <!-- Level Range Filter -->
-        <div class = "filter-item">
-            <i class="fas fa-star"></i>
-            <div class = "filter-content">
-                <label for="min-level">Min Level:</label>
-                <select id="min-level" name="min-level">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="7+">7+</option>
-                    <option value="8">8</option>
-                    <option value="8+">8+</option>
-                    <option value="9">9</option>
-                    <option value="9+">9+</option>
-                    <option value="10">10</option>
-                    <option value="10+">10+</option>
-                    <option value="11">11</option>
-                    <option value="11+">11+</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <div class = "filter-content">
-                <label for="max-level">Max Level:</label>
-                <select id="max-level" name="max-level">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="7+">7+</option>
-                    <option value="8">8</option>
-                    <option value="8+">8+</option>
-                    <option value="9">9</option>
-                    <option value="9+">9+</option>
-                    <option value="10">10</option>
-                    <option value="10+">10+</option>
-                    <option value="11">11</option>
-                    <option value="11+">11+</option>
-                    <option value="12" selected>12</option>
-                </select>
-            </div>
-        </div>
-    </section>
-
-    <!-- Random Song Button -->
-    <div class="button-container">
-        <button id="random-button">
-            <i class="fas fa-random"></i> Pick a Song
-        </button>
-        <button id="random-button-multiple">
-            <i class="fas fa-random"></i> Random Set
-        </button>
-    </div>    
-    
-    <!-- Song Grid Section -->
-    <section id="song-grid" class="song-grid">
         
-    </section>
-    
-    <!-- Modal -->
-    <div id="song-modal" class="modal hidden">
-        <div class="modal-content">
-            
+        <!-- Filter Section -->
+        <!-- Reset Filters Button -->
+        <div class="filter-header">
+            <button id="resetFilters" class="reset-button">
+                <i class="fas fa-sync-alt"></i> Reset Filters
+            </button>
         </div>
-    </div>
+        <section id="filter">
+            <!-- Song Packs Filter -->
+            <div class="filter-item">
+                <i class="far fa-folder"></i>
+                <div class="filter-content">
+                    <label for="song-pack-filter">Song Packs</label>
+                    <select id="song-pack-filter">
+                        <option value="all">All</option>
+                        <option value="arcaea">Arcaea</option>
+                        <option value="memory archive">Memory Archive</option>
+                        <option value="extend archive">Extend Archive</option>
+                        <option value="eternal core">Eternal Core</option>
+                        <option value="vicious labyrinth">Vicious Labyrinth</option>
+                        <option value="luminous sky">Luminous Sky</option>
+                        <option value="adverse prelude">Adverse Prelude</option>
+                        <option value="black fate">Black Fate</option>
+                        <option value="final verdict / silent answer">Final Verdict / Silent Answer</option>
+                        <option value="lasting eden / served eden">Lasting Eden / Served Eden</option>
+                        <option value="absolute nihil">Absolute Nihil</option>
+                        <option value="lucent historia">Lucent Historia</option>
+                        <option value="crimson solace">Crimson Solace</option>
+                        <option value="ambivalent vision">Ambivalent Vision</option>
+                        <option value="binary enfold">Binary Enfold</option>
+                        <option value="absolute reason">Absolute Reason</option>
+                        <option value="sunset radiance">Sunset Radiance</option>
+                        <option value="ephemeral page">Ephemeral Page</option>
+                        <option value="esoteric order">Esoteric Order</option>
+                        <option value="divided heart">Divided Heart</option>
+                        <option value="dynamix">Dynamix</option>
+                        <option value="lanota">Lanota</option>
+                        <option value="tone sphere">Tone Sphere</option>
+                        <option value="groove coaster">Groove Coaster</option>
+                        <option value="chunithm">CHUNITHM</option>
+                        <option value="o.n.g.e.k.i">O.N.G.E.K.I</option>
+                        <option value="maimai">maimai</option>
+                        <option value="wacca">WACCA</option>
+                        <option value="muse dash">Muse Dash</option>
+                        <option value="cytus ii">Cytus II</option>
+                        <option value="rotaeno">Rotaeno</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Name Search -->
+            <div class="filter-item">
+                <i class="fas fa-font"></i>
+                <div class="input-container">
+                    <label for="search">Name</label>
+                    <input type="text" id="search" placeholder="Type here...">
+                </div>
+            </div>
+            <!-- Difficulty Filter -->
+            <div class="filter-item">
+                <i class="fa-solid fa-skull-crossbones"></i>
+                <div class="filter-content">
+                    <label for="difficulty-filter">Difficulty</label>
+                    <select id="difficulty-filter">
+                        <option value="all">All</option>
+                        <option value="past">Past</option>
+                        <option value="present">Present</option>
+                        <option value="future">Future</option>
+                        <option value="beyond">Beyond</option>
+                        <option value="eternal">Eternal</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Level Range Filter -->
+            <div class = "filter-item">
+                <i class="fas fa-star"></i>
+                <div class = "filter-content">
+                    <label for="min-level">Min Level:</label>
+                    <select id="min-level" name="min-level">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="7+">7+</option>
+                        <option value="8">8</option>
+                        <option value="8+">8+</option>
+                        <option value="9">9</option>
+                        <option value="9+">9+</option>
+                        <option value="10">10</option>
+                        <option value="10+">10+</option>
+                        <option value="11">11</option>
+                        <option value="11+">11+</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class = "filter-content">
+                    <label for="max-level">Max Level:</label>
+                    <select id="max-level" name="max-level">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="7+">7+</option>
+                        <option value="8">8</option>
+                        <option value="8+">8+</option>
+                        <option value="9">9</option>
+                        <option value="9+">9+</option>
+                        <option value="10">10</option>
+                        <option value="10+">10+</option>
+                        <option value="11">11</option>
+                        <option value="11+">11+</option>
+                        <option value="12" selected>12</option>
+                    </select>
+                </div>
+            </div>
+        </section>
 
-    <div id="random-multiple-modal" class="random-modal hidden">
-        <div class="random-modal-content"></div>
-    </div>
+        <!-- Random Song Button -->
+        <div class="button-container">
+            <button id="random-button">
+                <i class="fas fa-random"></i> Pick a Song
+            </button>
+            <button id="random-button-multiple">
+                <i class="fas fa-random"></i> Random Set
+            </button>
+        </div>    
+        
+        <!-- Song Grid Section -->
+        <section id="song-grid" class="song-grid">
+            
+        </section>
+        
+        <!-- Modal -->
+        <div id="song-modal" class="modal hidden">
+            <div class="modal-content">
+                
+            </div>
+        </div>
 
+        <div id="random-multiple-modal" class="random-modal hidden">
+            <div class="random-modal-content"></div>
+        </div>
 
-    <script src="song_grid.js"></script>
+        <script src="song_grid.js"></script>
+    </section>
 </body>
 </html>

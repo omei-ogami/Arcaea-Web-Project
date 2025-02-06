@@ -7,10 +7,43 @@
 
 /* Header */
 header {
-    background-color: #7c3570cb;
-    color: #fff;
+    position: absolute; /* Overlay on background */
+    top: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%); /* Center header */
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+    font-family: 'GeosansLight', sans-serif;
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+body {
+    background: url('bg.png') no-repeat center/cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dark overlay effect */
+body::before {
+    content: "";
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity for darkness */
+    z-index: -1; /* Keep it behind everything */
+}
+
+.content-wrapper {
+    max-width: 1200px; /* Adjust based on preference */
+    margin: 105px auto; /* Adds top, left, and right margins */
+    background: white; /* Ensures content is readable */
     padding: 20px;
-    font-family: Kazesawa, sans-serif;
+    border-radius: 10px; /* Optional: Adds smooth rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds slight shadow */
 }
 
 .container { 
@@ -54,7 +87,6 @@ header {
 .reset-button:hover {
     color: #333;
 }
-
 
 /* Filter Section */
 #filter {
@@ -168,9 +200,9 @@ header {
 
 /* Label styles */
 .song-card label {
-    font-size: 15px; /* Adjust size for better fit */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 900;
+    font-size: 16px; /* Adjust size for better fit */
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
     display: block; /* Ensure it takes a full line below the image */
     margin-top: auto; /* Avoid collapsing margins */
     line-height: 1.2; /* Add some spacing within text lines */
@@ -266,7 +298,7 @@ header {
 
 .modal-content h3 {
     font-size: 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sanif;
+    font-family: "Kazesawa-Semibold";
     text-align: start;
 }
 
@@ -340,6 +372,7 @@ header {
     height: 5vh;            /* 讓容器撐滿整個畫面 */
     margin-bottom: 25px;      /* 留出空間 */
     gap: 50px;
+    margin-bottom: 30px;
 }
 
 /* 按鈕樣式 */
@@ -428,17 +461,17 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    visibility: hidden; /* Hidden by default */
+    visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+    transition: opacity 0.3s ease-in-out;
 }
 
-/* Show the modal */
+/* 显示 modal */
 .random-modal.show {
     visibility: visible;
     opacity: 1;
